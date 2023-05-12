@@ -1,6 +1,6 @@
 # Instance
 resource "aws_instance" "private-instance" {
-  instance_type           = "t2.micro"
+  instance_type           = var.private-instance-type
   ami                     = data.aws_ami.ubuntu.id
   subnet_id               = module.vpc.privatesubnet0-id
   security_groups         = [aws_security_group.sgr-sshall.id]
@@ -22,6 +22,6 @@ resource "aws_instance" "bastionhost" {
   disable_api_termination     = false
   ebs_optimized               = false
   tags = {
-    "Name" = "${var.project-name}-public-instance"
+    "Name" = "${var.project-name}-bastionhost"
   }
 }
