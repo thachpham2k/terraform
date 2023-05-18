@@ -5,7 +5,7 @@ variable "natintance-subnet-id" {
 }
 
 variable "private-subnet" {
-    type = list
+  type = list(any)
 }
 
 variable "project-name" {

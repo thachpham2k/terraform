@@ -11,9 +11,9 @@ module "sshkeypair" {
 }
 
 module "natinstance" {
-  source = "./modules/natinstance"
-  vpc-id = module.vpc.vpc-id
+  source               = "./modules/natinstance"
+  vpc-id               = module.vpc.vpc-id
   natintance-subnet-id = module.vpc.publicsubnet0-id
-  private-subnet = module.vpc.privatesubnet
-  project-name = var.project-name
+  private-subnet       = module.vpc.privatesubnet
+  project-name         = var.project-name
 }
