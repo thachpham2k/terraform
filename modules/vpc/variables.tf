@@ -58,9 +58,3 @@ variable "has_private_subnet" {
   type        = bool
   default     = false
 }
-
-variable "has_s3_endpoint" {
-  description = "Do you want to have s3 endpoint for vpc?"
-  type        = bool
-  default     = false
-}

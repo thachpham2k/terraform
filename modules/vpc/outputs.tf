@@ -2,14 +2,18 @@ output "vpc_id" {
   value = aws_vpc.vpc.id
 }
 
-output "privatesubnet_cidr" {
-  value = tolist(aws_subnet.privatesubnet)[*].cidr_block
+output "privatesubnet" {
+  value = zipmap(tolist(aws_subnet.privatesubnet)[*].id, tolist(aws_subnet.privatesubnet)[*].cidr_block)
 }
 
-output "publicsubnet_cidr" {
-  value = tolist(aws_subnet.publicsubnet)[*].cidr_block
+output "publicsubnet" {
+  value = zipmap(tolist(aws_subnet.publicsubnet)[*].id, tolist(aws_subnet.publicsubnet)[*].cidr_block)
 }
 
 output "availabilityzone" {
   value = data.aws_availability_zones.availability_zone.names
+}
+
+output "internetgateway" {
+  value = aws_internet_gateway.internet_gateway.id
 }
