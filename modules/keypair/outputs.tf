@@ -3,11 +3,11 @@ output "keypair-name" {
 }
 
 output "keypairpublic" {
-  value     = tls_private_key.keypair.public_key_pem
+  value = tls_private_key.keypair.public_key_pem
 }
 
 output "keypaiprivate" {
-  value = tls_private_key.keypair.private_key_pem
+  value     = tls_private_key.keypair.private_key_pem
   sensitive = true
 }
 

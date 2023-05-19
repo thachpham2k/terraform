@@ -22,7 +22,7 @@ variable "vpc_cidr" {
   default     = "10.0.0.0/16"
 
   validation {
-    condition = can(cidrhost(var.vpc_cidr, 32))
+    condition     = can(cidrhost(var.vpc_cidr, 32))
     error_message = "Must be valid IPv4 CIDR."
   }
 

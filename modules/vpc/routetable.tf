@@ -10,7 +10,7 @@ resource "aws_route_table" "prisub_routetable" {
 resource "aws_route_table_association" "prisub_routetable_association" {
   count = length(aws_subnet.privatesubnet)
 
-  subnet_id = aws_subnet.privatesubnet[count.index].id
+  subnet_id      = aws_subnet.privatesubnet[count.index].id
   route_table_id = aws_route_table.prisub_routetable[count.index].id
 }
 # RouteTable for public subnet
@@ -28,6 +28,6 @@ resource "aws_route_table" "pubsub_routetable" {
 resource "aws_route_table_association" "route-table-association-publicsubnet" {
   count = length(aws_subnet.publicsubnet)
 
-  subnet_id = aws_subnet.publicsubnet[count.index].id
+  subnet_id      = aws_subnet.publicsubnet[count.index].id
   route_table_id = aws_route_table.pubsub_routetable.id
 }

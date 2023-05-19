@@ -9,7 +9,7 @@ resource "aws_subnet" "privatesubnet" {
     aws_vpc.vpc
   ]
 
-  tags = merge({ Name = "${var.module_name}-privatesubnet-${count.index + 1}-${tolist(data.aws_availability_zones.availability_zone.names)[count.index]}"}, var.module_tags)
+  tags = merge({ Name = "${var.module_name}-privatesubnet-${count.index + 1}-${tolist(data.aws_availability_zones.availability_zone.names)[count.index]}" }, var.module_tags)
 }
 
 resource "aws_subnet" "publicsubnet" {
@@ -23,5 +23,5 @@ resource "aws_subnet" "publicsubnet" {
     aws_vpc.vpc
   ]
 
-  tags = merge({ Name = "${var.module_name}-publicsubnet-${count.index + 1}-${tolist(data.aws_availability_zones.availability_zone.names)[count.index]}"}, var.module_tags)
+  tags = merge({ Name = "${var.module_name}-publicsubnet-${count.index + 1}-${tolist(data.aws_availability_zones.availability_zone.names)[count.index]}" }, var.module_tags)
 }
