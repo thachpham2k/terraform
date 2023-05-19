@@ -19,7 +19,22 @@ variable "module_name" {
 variable "vpc_cidr" {
   description = "VPC CIDR"
   type        = string
-  default     = "10.1.0.0/16"
+  default     = "10.0.0.0/16"
+
+  validation {
+    condition = can(cidrhost(var.vpc_cidr, 32))
+    error_message = "Must be valid IPv4 CIDR."
+  }
+
+  validation {
+    condition = can(regex("^(10\\.\\d{1,3}\\.|172\\.(1[6-9]|2[0-9]|3[0-1])\\.|192\\.168\\.)\\d{1,3}\\.\\d{1,3}/\\d{1,2}$", var.vpc_cidr))
+    # condition = anytrue(
+    #   [
+    #     can(regex("^(10\\.\\d{1,3}\\.|172\\.(1[6-9]|2[0-9]|3[0-1])\\.|192\\.168\\.)\\d{1,3}\\.\\d{1,3}/\\d{1,2}$", var.vpc_cidr))
+    #   ]
+    # )
+    error_message = "Must be a valid IPv4 CIDR block address."
+  }
 }
 
 variable "number_of_az" {

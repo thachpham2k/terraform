@@ -2,10 +2,10 @@ module "vpc" {
   source             = "../../modules/vpc"
   region             = local.region
   module_tags        = var.tags
-  module_name        = "vpc"
-  vpc_cidr           = "10.1.0.0/16"
-  number_of_az       = 0
-  has_public_subnet  = true
-  has_private_subnet = true
-  has_s3_endpoint    = false
+  module_name        = var.name_prefix
+  vpc_cidr           = var.vpc_cidr
+  number_of_az       = var.number_of_az
+  has_public_subnet  = var.has_public_subnet
+  has_private_subnet = var.has_private_subnet
+  has_s3_endpoint    = var.has_s3_endpoint
 }
