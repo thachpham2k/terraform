@@ -1,4 +1,8 @@
-variable "tags" {
+variable "region" {
+  default = "ap-southeast-1"
+}
+
+variable "module_tags" {
   description = "Project tags"
   type        = map(any)
   default = {
@@ -7,7 +11,7 @@ variable "tags" {
   }
 }
 
-variable "name_prefix" {
+variable "module_name" {
   description = "Prefix of vpc name. EG: input: 'test' -> vpc's name is 'test-vpc'"
   default     = "vpc"
 }
@@ -45,9 +49,3 @@ variable "has_s3_endpoint" {
   type        = bool
   default     = false
 }
-
-# variable "has_NAT" {
-#   description = "Do you want to have private subnet?"
-#   type = bool
-#   default = false
-# }
