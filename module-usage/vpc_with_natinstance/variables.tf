@@ -39,3 +39,8 @@ variable "has_private_subnet" {
   type        = bool
   default     = false
 }
+
+variable "key_path" {
+  description = "Where keypair file saved"
+  default     = "."
+}
