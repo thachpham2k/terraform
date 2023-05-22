@@ -8,5 +8,5 @@ module "vpc" {
   has_public_subnet  = var.has_public_subnet
   has_private_subnet = var.has_private_subnet
   nat_az             = 1
-  has_nat_gateway    = true
+  has_nat_gateway    = false
 }

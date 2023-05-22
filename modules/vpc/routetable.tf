@@ -13,6 +13,15 @@ resource "aws_route_table" "prisub_routetable" {
     }
   }
 
+  dynamic "route" {
+    for_each = aws_instance.natinstance
+
+    content {
+      cidr_block  = "0.0.0.0/0"
+      instance_id = route.value.id
+    }
+  }
+
   tags = merge({ Name = "${var.module_name}-routetable-for-prisubnet-${count.index + 1}" }, var.module_tags)
 }
 

@@ -59,13 +59,13 @@ variable "has_private_subnet" {
   default     = false
 }
 
-variable "nat_gateway_az" {
+variable "nat_az" {
   description = "Select az locate nat? (Choose 0 is not have nat)"
   type        = number
   default     = 0
 
   validation {
-    condition     = (var.nat_gateway_az >= 0 && var.nat_gateway_az <= 3)
+    condition     = (var.nat_az >= 0 && var.nat_az <= 3)
     error_message = "(NAT AZ = 0 -> not have nat) or (NAT AZ > 0 and <= number of public subnet) (Note: You need to have public subnet in order to locate nat)"
   }
 }

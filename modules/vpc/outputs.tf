@@ -21,3 +21,7 @@ output "internetgateway" {
 output "eip-natgw-publicip" {
   value = length(aws_eip.eip) > 0 ? aws_eip.eip[0].public_ip : null
 }
+
+output "natinstance-publicip" {
+  value = length(aws_instance.natinstance) > 0 ? aws_instance.natinstance[0].public_ip : null
+}
