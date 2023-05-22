@@ -17,3 +17,7 @@ output "availabilityzone" {
 output "internetgateway" {
   value = aws_internet_gateway.internet_gateway.id
 }
+
+output "eip-natgw-publicip" {
+  value = length(aws_eip.eip) > 0 ? aws_eip.eip[0].public_ip : null
+}

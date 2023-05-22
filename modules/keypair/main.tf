@@ -7,7 +7,7 @@ resource "tls_private_key" "keypair" {
 resource "aws_key_pair" "keypair" {
   key_name   = "${var.key_name}-keypair"
   public_key = tls_private_key.keypair.public_key_openssh
-  tags = var.key_tags
+  tags       = var.key_tags
 }
 
 resource "local_file" "key_file" {

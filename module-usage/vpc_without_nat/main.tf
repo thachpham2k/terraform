@@ -7,4 +7,6 @@ module "vpc" {
   number_of_az       = var.number_of_az
   has_public_subnet  = var.has_public_subnet
   has_private_subnet = var.has_private_subnet
+  nat_gateway_az     = 0
+  has_nat_gateway    = false
 }

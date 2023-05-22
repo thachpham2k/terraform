@@ -19,5 +19,5 @@ output "internetgateway" {
 }
 
 output "eip-natgw-publicip" {
-  value = module.natgateway.eip-natgw-publicip
+  value = module.vpc.eip-natgw-publicip
 }

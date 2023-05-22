@@ -4,6 +4,15 @@ resource "aws_route_table" "prisub_routetable" {
 
   vpc_id = aws_vpc.vpc.id
 
+  dynamic "route" {
+    for_each = aws_nat_gateway.natgateway
+
+    content {
+      cidr_block = "0.0.0.0/0"
+      gateway_id = route.value.id
+    }
+  }
+
   tags = merge({ Name = "${var.module_name}-routetable-for-prisubnet-${count.index + 1}" }, var.module_tags)
 }
 

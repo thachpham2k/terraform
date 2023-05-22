@@ -2,7 +2,7 @@ tags = {
   "Project" : "vpc"
   "Author" : "terraform"
 }
-name_prefix        = "vpc"
+name_prefix = "vpc"
 # vpc
 vpc_cidr           = "10.1.0.0/16"
 number_of_az       = 3
