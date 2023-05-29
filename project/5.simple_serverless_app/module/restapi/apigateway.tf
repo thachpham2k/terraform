@@ -15,8 +15,8 @@ resource "aws_api_gateway_rest_api" "apigw" {
 resource "aws_api_gateway_method" "root" {
   count = length(var.lambda_function)
 
-  rest_api_id   = aws_api_gateway_rest_api.apigw.id
-  resource_id   = aws_api_gateway_rest_api.apigw.root_resource_id
+  rest_api_id = aws_api_gateway_rest_api.apigw.id
+  resource_id = aws_api_gateway_rest_api.apigw.root_resource_id
 
   http_method   = var.lambda_function[count.index].function_method
   authorization = "NONE"
@@ -102,13 +102,13 @@ resource "aws_api_gateway_stage" "apigw-stage" {
 }
 
 resource "aws_api_gateway_method_settings" "apigw-method_settings" {
-  rest_api_id = "${aws_api_gateway_rest_api.apigw.id}"
-  stage_name  = "${aws_api_gateway_deployment.apigw-deployment.stage_name}"
+  rest_api_id = aws_api_gateway_rest_api.apigw.id
+  stage_name  = aws_api_gateway_deployment.apigw-deployment.stage_name
   method_path = "*/*"
 
   settings {
-    metrics_enabled        = true
-    data_trace_enabled     = true
-    logging_level          = "INFO"
+    metrics_enabled    = true
+    data_trace_enabled = true
+    logging_level      = "INFO"
   }
 }
